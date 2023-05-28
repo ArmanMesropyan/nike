@@ -1,7 +1,7 @@
 import axios from "axios";
-
+const API_BASE_URL = process.env.API_BASE_URL;
 const instance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: `${API_BASE_URL}/api`,
 });
 
 export const fetchDataFromApi = async (endpoint) => {

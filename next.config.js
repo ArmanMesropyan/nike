@@ -4,10 +4,12 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {
-    domains: ["http://localhost:3000"],
+  env: {
+    API_BASE_URL: "http://localhost:3000" || "http://127.0.0.1:3000",
   },
-
+  images: {
+    domains: ["http://localhost:3000", "http://127.0.0.1:3000"],
+  },
 };
 
 module.exports = nextConfig;
