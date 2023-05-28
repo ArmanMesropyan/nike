@@ -16,14 +16,27 @@ import ChangeColor from "@/components/ChangeColor";
 
 const ProductDetails = ({ singleProduct, products }) => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const { productId } = router.query;
   const [carouselImage, setCarouselImage] = useState(singleProduct.image);
   const [selectedSize, setSelectedSize] = useState();
   const [showError, setShowError] = useState(false);
-  const { isItemAdded, lastAddedItem, wishListItems } = useSelector(
-    (state) => state.wishList
-  );
+  const isItemAdded = useSelector((state) => state.wishList.isItemAdded);
+
+  useEffect(() => {
+    if (isItemAdded === 1 ) {
+      toast.success("Success. Check your Wishlist", {
+        icon: "❤️",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      dispatch(changeIsItemAdded());
+    }
+  }, [isItemAdded, dispatch]);
 
   useEffect(() => {
     setCarouselImage(singleProduct.image);
@@ -40,25 +53,6 @@ const ProductDetails = ({ singleProduct, products }) => {
       progress: undefined,
       theme: "light",
     });
-  };
-  const notifyWish = () => {
-    if (
-      wishListItems.length > 0 &&
-      isItemAdded === 1 &&
-      lastAddedItem != null
-    ) {
-      toast.success("Success. Check your Wishlist", {
-        icon: "❤️",
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
   };
 
   const changeProcut = {
@@ -194,9 +188,7 @@ const ProductDetails = ({ singleProduct, products }) => {
                           })
                         )
                       : dispatch(addWishList(singleProduct));
-                    // notifyWish();
-
-                    dispatch(changeIsItemAdded());
+                
                   }}
                 >
                   Wishlist

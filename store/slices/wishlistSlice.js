@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   wishListItems: [],
   isItemAdded: 0,
-  lastAddedItem: null,
 };
 
 const wishlistSlice = createSlice({
@@ -20,8 +19,7 @@ const wishlistSlice = createSlice({
 
       if (!item) {
         state.wishListItems.push(action.payload);
-        state.lastAddedItem = action.payload;
-        state.isItemAdded = 0;
+        state.isItemAdded = 1;
       }
     },
     deleteFromWishList: (state, action) => {
@@ -29,11 +27,12 @@ const wishlistSlice = createSlice({
         (product) => product.id !== action.payload.id
       );
     },
-    changeIsItemAdded: (state, aciton) => {
-      state.isItemAdded += 1;
+    changeIsItemAdded: (state) => {
+      state.isItemAdded = 0;
     },
   },
 });
+
 export const { addWishList, changeIsItemAdded, deleteFromWishList } =
   wishlistSlice.actions;
 export default wishlistSlice.reducer;
