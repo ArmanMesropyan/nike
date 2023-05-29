@@ -15,6 +15,7 @@
     "@stripe/stripe-js": "^1.48.0",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
     "formik": "^2.3.2",
