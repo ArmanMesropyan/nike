@@ -3,7 +3,7 @@ import axios from "axios";
 const API_HOST = process.env.API_HOST;
 
 const instance = axios.create({
-  baseURL: `${API_HOST}`,
+  baseURL: `${API_HOST}/api`,
 });
 
 export const fetchDataFromApi = async (endpoint) => {
