@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "@/components/UI/banner/Banner";
 import PageWrapper from "@/components/layout/PageWrapper";
-import ProductCard from "@/components/customcomponents/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { fetchDataFromApi } from "@/utils/api";
 import VideoPage from "@/components/UI/videoPage";
 import EssentialPage from "@/components/UI/essentialPage";

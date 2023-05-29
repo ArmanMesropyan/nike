@@ -1,6 +1,6 @@
 import React from "react";
 import PageWrapper from "@/components/layout/PageWrapper";
-import ProductCard from "@/components/customcomponents/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { useRouter } from "next/router";
 import { fetchDataFromApi } from "@/utils/api";
 const Category = ({ category }) => {

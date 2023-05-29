@@ -12,7 +12,7 @@ import { fetchDataFromApi } from "@/utils/api";
 import { addToCart } from "@/store/slices/cartSlice";
 import { addWishList, changeIsItemAdded } from "@/store/slices/wishlistSlice";
 import LoadMore from "@/components/customcomponents/LoadMore";
-import ChangeColor from "@/components/customcomponents/ChangeColor";
+import ChangeColor from "@/components/ChangeColor";
 
 const ProductDetails = ({ singleProduct, products }) => {
   const dispatch = useDispatch();
