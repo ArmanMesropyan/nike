@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import PageWrapper from "@/components/PageWrapper";
-import CartItem from "@/components/CartItem";
+import PageWrapper from "@/components/layout/PageWrapper";
+import CartItem from "@/components/UI/cartItem/CartItem";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 

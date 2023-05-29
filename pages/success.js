@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrapper from "@/components/PageWrapper";
+import PageWrapper from "@/components/layout/PageWrapper";
 import Link from "next/link";
 
 const Success = () => {

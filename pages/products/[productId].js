@@ -5,14 +5,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdHeartEmpty } from "react-icons/io";
 
-import PageWrapper from "@/components/PageWrapper";
-import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
-import RelatedProducts from "@/components/RelatedProducts";
+import PageWrapper from "@/components/layout/PageWrapper";
+import ProductDetailsCarousel from "@/components/customcomponents/ProductDetailsCarousel";
+import RelatedProducts from "@/components/customcomponents/RelatedProducts";
 import { fetchDataFromApi } from "@/utils/api";
 import { addToCart } from "@/store/slices/cartSlice";
 import { addWishList, changeIsItemAdded } from "@/store/slices/wishlistSlice";
 import LoadMore from "@/components/customcomponents/LoadMore";
-import ChangeColor from "@/components/ChangeColor";
+import ChangeColor from "@/components/customcomponents/ChangeColor";
 
 const ProductDetails = ({ singleProduct, products }) => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const ProductDetails = ({ singleProduct, products }) => {
   const isItemAdded = useSelector((state) => state.wishList.isItemAdded);
 
   useEffect(() => {
-    if (isItemAdded === 1 ) {
+    if (isItemAdded === 1) {
       toast.success("Success. Check your Wishlist", {
         icon: "❤️",
         position: "bottom-right",
@@ -59,6 +59,7 @@ const ProductDetails = ({ singleProduct, products }) => {
     ...singleProduct,
     image: carouselImage,
   };
+
   return (
     <div className="w-full md:py-20">
       <PageWrapper>
@@ -188,7 +189,6 @@ const ProductDetails = ({ singleProduct, products }) => {
                           })
                         )
                       : dispatch(addWishList(singleProduct));
-                
                   }}
                 >
                   Wishlist
@@ -214,23 +214,39 @@ const ProductDetails = ({ singleProduct, products }) => {
 export default ProductDetails;
 
 export async function getStaticPaths() {
-  const products = await fetchDataFromApi("/products");
-  const paths = products.map((product) => ({
-    params: {
-      productId: product.id.toString(),
-    },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
+  try {
+    const products = await fetchDataFromApi("/products");
+    const paths = products.map((product) => ({
+      params: {
+        productId: product.id.toString(),
+      },
+    }));
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    console.error("Error getting static paths:", error);
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
 }
+
 export async function getStaticProps(context) {
-  const { params } = context;
-  const { productId } = params;
-  const response = await fetchDataFromApi(`/products/${productId}`);
-  const products = await fetchDataFromApi("/products");
-  return {
-    props: { singleProduct: response, products },
-  };
+  try {
+    const { params } = context;
+    const { productId } = params;
+    const response = await fetchDataFromApi(`/products/${productId}`);
+    const products = await fetchDataFromApi("/products");
+    return {
+      props: { singleProduct: response, products },
+    };
+  } catch (error) {
+    console.error("Error while getting static properties:", error);
+    return {
+      props: { singleProduct: null, products: [] },
+    };
+  }
 }

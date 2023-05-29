@@ -1,5 +1,5 @@
-import PageWrapper from "@/components/PageWrapper";
-import ProductCard from "@/components/ProductCard";
+import PageWrapper from "@/components/layout/PageWrapper";
+import ProductCard from "@/components/customcomponents/ProductCard";
 import { addToCart } from "@/store/slices/cartSlice";
 import { deleteFromWishList } from "@/store/slices/wishlistSlice";
 import Image from "next/image";

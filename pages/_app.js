@@ -1,11 +1,11 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import "@/styles/globals.scss";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import store from "@/store/store";
 import usePreloader from "@/hook/preloader";
-import LoadingIndicator from "@/components/utils/loader/loader";
+import LoadingIndicator from "@/components/tools/loader/loader";
 import { useRouter } from "next/router";
 export default function App({ Component, pageProps }) {
   const { isLoading } = usePreloader();

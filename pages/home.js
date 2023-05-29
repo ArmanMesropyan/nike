@@ -1,7 +1,7 @@
 import React from "react";
-import Banner from "@/components/Banner";
-import PageWrapper from "@/components/PageWrapper";
-import ProductCard from "@/components/ProductCard";
+import Banner from "@/components/UI/banner/Banner";
+import PageWrapper from "@/components/layout/PageWrapper";
+import ProductCard from "@/components/customcomponents/ProductCard";
 import { fetchDataFromApi } from "@/utils/api";
 import VideoPage from "@/components/UI/videoPage";
 import EssentialPage from "@/components/UI/essentialPage";
@@ -43,8 +43,15 @@ export default function Home({ products }) {
 }
 
 export async function getStaticProps() {
-  const products = await fetchDataFromApi("/products");
-  return {
-    props: { products },
-  };
+  try {
+    const products = await fetchDataFromApi("/products");
+    return {
+      props: { products },
+    };
+  } catch (error) {
+    console.error("Error while getting static properties::", error);
+    return {
+      props: { products: [] },
+    };
+  }
 }

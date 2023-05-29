@@ -1,9 +1,9 @@
 import React from "react";
-import PageWrapper from "@/components/PageWrapper";
-import ProductCard from "@/components/ProductCard";
+import PageWrapper from "@/components/layout/PageWrapper";
+import ProductCard from "@/components/customcomponents/ProductCard";
 import { useRouter } from "next/router";
 import { fetchDataFromApi } from "@/utils/api";
-const Category = ({category}) => {
+const Category = ({ category }) => {
   const router = useRouter();
   const { item } = router.query;
   function capitalizeFirstLetter(string) {
@@ -17,9 +17,14 @@ const Category = ({category}) => {
             {capitalizeFirstLetter(item)}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-            {category && category.map((product)=> {
-              return <React.Fragment key={product.id}><ProductCard product={product}/></React.Fragment>
-            })}
+            {category &&
+              category.map((product) => {
+                return (
+                  <React.Fragment key={product.id}>
+                    <ProductCard product={product} />
+                  </React.Fragment>
+                );
+              })}
           </div>
         </div>
       </PageWrapper>
@@ -30,20 +35,36 @@ const Category = ({category}) => {
 export default Category;
 
 export async function getStaticPaths() {
-  const categories = await fetchDataFromApi("/categories");
-  const paths = categories.map((category) => ({
-    params: {
-      item: category,
-    }
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
+  try {
+    const categories = await fetchDataFromApi("/categories");
+    const paths = categories.map((category) => ({
+      params: {
+        item: category,
+      },
+    }));
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    console.error("Error getting static paths:", error);
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
 }
-export async function getStaticProps({params:{item}}){
-  const category = await fetchDataFromApi(`/categories/${item}`)
-  return {
-    props:{category}
+
+export async function getStaticProps({ params: { item } }) {
+  try {
+    const category = await fetchDataFromApi(`/categories/${item}`);
+    return {
+      props: { category },
+    };
+  } catch (error) {
+    console.error("Error while getting static properties:", error);
+    return {
+      props: { category: null },
+    };
   }
 }

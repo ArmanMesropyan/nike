@@ -2,32 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
-import PageWrapper from "@/components/PageWrapper";
-import useTextScroll from "@/hook/useTextScroll/useTextScroll";
+import PageWrapper from "@/components/layout/PageWrapper";
+
 
 const Landing = () => {
-  const { scrollPosition } = useTextScroll();
-  const [fixedClassName, setFixedClassName] = useState("static");
-  const [hiddenClassName, setHiddenClassName] = useState("");
-
-  useEffect(() => {
-    if (scrollPosition > 150 && scrollPosition < 1433) {
-      setFixedClassName("fixed");
-    } else {
-      setFixedClassName("static");
-      setHiddenClassName("hidden");
-    }
-
-    console.log(fixedClassName);
-  }, [scrollPosition]);
 
   return (
     <div className="bg-zinc-950 text-white overflow-x-hidden" style={{ overflow: "scroll" }}>
-      <h2 className="text-white-[0.8] font-bold leading-[190px] text-6xl text-center">
+      <h2 className="text-white-[0.8] font-bold leading-[190px] text-6xl text-center"
+        style={{fontFamily:'Anton'}}
+      >
         Welcome to Nike
       </h2>
 
-      <div className="relative w-full" >
+      {/* <div className="relative w-full" >
         <video
           src="/video/landing.webm"
           autoPlay
@@ -36,8 +24,8 @@ const Landing = () => {
           className={`${fixedClassName} left-0 top-0`}
         ></video>
         <div className="bg-black/[0.4] absolute top-0 left-0 w-full h-full"></div>
-      </div>
-      <PageWrapper>
+      </div> */}
+      {/* <PageWrapper>
         <div
           className={`py-16 ${
             fixedClassName === "fixed" ? "absolute left-10 top-40" : "hidden"
@@ -128,7 +116,7 @@ const Landing = () => {
           exercitationem ex assumenda dolorum nostrum. Accusantium magni
           doloremque consequatur.
         </div>
-      </PageWrapper>
+      </PageWrapper> */}
     </div>
   );
 };

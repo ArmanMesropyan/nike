@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import PageWrapper from "./PageWrapper";
 import Link from "next/link";
 import Image from "next/image";
-import Menu from "./Menu";
-import MenuMobile from "./MenuMobile";
+import Menu from "../UI/menu/desktop/Menu";
+import MenuMobile from "../UI/menu/mobile/MenuMobile";
 
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
