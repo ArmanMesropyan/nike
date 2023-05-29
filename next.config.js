@@ -5,7 +5,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   env: {
-    API_BASE_URL: "http://localhost:3000/api",
+    API_HOST: "http://localhost:3000/api",
   },
   images: {
     domains: ["http://localhost:3000"],
