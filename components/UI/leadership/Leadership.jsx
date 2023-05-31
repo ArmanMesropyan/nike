@@ -107,14 +107,14 @@ const Leadership = () => {
           return (
             <div
               key={person.id}
-              className="w-full mob:w-[45%] lg:w-[23%] my-1 mob:mr-2 sm:mr-5"
+              className="w-full mob:w-[45%] md:w-[30%] lg:w-[23%] my-1 mob:mr-2 sm:mr-5"
             >
               <Image
                 src={person.img}
                 alt="leadership image"
                 width={300}
                 height={160}
-                className="mx-auto mob:w-[200px]  sm:mx-0"
+                className="mx-auto  mob:w-[200px] sm:w-full  sm:mx-0"
               />
               <h6 className="text-center sm:text-left text-xl my-2 font-[700]">
                 {person.name}

@@ -86,7 +86,64 @@ const About = () => {
           </div>
         </div>
         <Leadership />
-      <AboutHeadquarters />
+        <AboutHeadquarters />
+        <div className="flex flex-col md:flex-row justify-between mt-20">
+          <div className="w-full md:w-2/3">
+            <h6 className="text-[25px] sm:text-[30px]  lg:text-[50px] leading-[30px] sm:leading-[50px] font-bold max-w-[650px]">
+              Play "Your Move" to see how Nike, Inc. is creating bigger change
+            </h6>
+            <p className="mt-5 text-lg font-medium">Launch Website </p>
+          </div>
+          <div className="w-full md:w-1/3 mt-5 md:mt-0">
+            <Image
+              src="/assets/gamechange.jpg"
+              alt="gamechange"
+              width={400}
+              height={300}
+              className="w-full"
+            />
+          </div>
+        </div>
+        <div className="py-5">
+          <h5 className="mt-20 mb-5 text-3xl font-semibold">Read more</h5>
+          <div className="flex flex-wrap">
+            <div className="mob:w-1/2 md:w-1/3 mt-5 md:mt-0 px-3">
+              <Image
+                src="/assets/readmore1.jpg"
+                alt="read more "
+                width={400}
+                height={300}
+              />
+              <p className="text-sm my-2">Release</p>
+              <h4 className="sm:text-xl lg:text-2xl font-bold max-w-[300px]">
+                With Second Cohort, Nike Athlete Think Tank Deepens Commitment
+                to Champion Women’s Sport
+              </h4>
+            </div>
+            <div className="mob:w-1/2 md:w-1/3 mt-5 md:mt-0 px-3">
+              <Image
+                src="/assets/readmore.jpg"
+                alt="read more "
+                width={400}
+                height={300}
+              />
+              <p className="text-sm my-2">Release</p>
+              <h4 className="mob:text-sm sm:text-xl lg:text-2xl font-bold max-w-[300px]">Nike Basketball Adds Ja Morant to Its Signature Roster</h4>
+            </div>
+            <div className="mob:w-1/2 md:w-1/3 mt-5 md:mt-0 px-3">
+              <Image
+                src="/assets/readmore2.jpg"
+                alt="read more "
+                width={400}
+                height={300}
+              />
+              <p className="text-sm my-2">Release</p>
+              <h4 className="sm:text-xl lg:text-2xl font-bold max-w-[300px]">
+                Nike Launches First Hydrogen-Powered Inland Container Ship
+              </h4>
+            </div>
+          </div>
+        </div>
       </PageWrapper>
     </div>
   );
