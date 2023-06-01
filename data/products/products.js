@@ -6,12 +6,12 @@ export const products = [
     category: "Men's Shoes",
     sellCount: 1500,
     image: [
-      "/assets/products/airForce/1low/1.webp",
-      "/assets/products/airForce/1low/2.webp",
-      "/assets/products/airForce/1low/3.webp",
-      "/assets/products/airForce/1low/4.webp",
-      "/assets/products/airForce/1low/5.webp",
-      "/assets/products/airForce/1low/6.webp",
+      "/assets/products/airForce/1Low/1.webp",
+      "/assets/products/airForce/1Low/2.webp",
+      "/assets/products/airForce/1Low/3.webp",
+      "/assets/products/airForce/1Low/4.webp",
+      "/assets/products/airForce/1Low/5.webp",
+      "/assets/products/airForce/1Low/6.webp",
     ],
     size: [
       { s: 36, enabled: true },
